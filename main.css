@@ -18,21 +18,14 @@ nav{
 .logo svg{
     width: auto;
     height: 35px;
-    /* padding: 5px; */
-    /* display: none; */
 }
 .nav-options ul{
-    /* border: solid; */
-    /* height: 40px; */
     display: flex;
     align-items: center;
     list-style: none;
 }
 .nav-options ul li{
-    /* border: solid; */
     height: 40px;
-    /* display: flex; */
-    /* align-items: center; */
 }
 .nav-options ul li a{
     height: 100%;
