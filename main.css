@@ -45,12 +45,10 @@ body{
     height: 120vh;
     background-color: rgba(255, 255, 0, 0.075);
 }
-.home-page span{
+main span{
     text-shadow: 1px 1px 5px rgb(243, 210, 104);
+    color: brown;
 }
-.home-page div{
+main div{
     display: flex;
-}
-span{
-    color: red;
 }
