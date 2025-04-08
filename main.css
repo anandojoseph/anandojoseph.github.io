@@ -10,8 +10,14 @@ nav{
     justify-content: space-between;
     height: 40px;
     box-shadow: 0px -8px 20px 5px rgb(181, 146, 32);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+main{
+    margin-top: 50px;
 }
 .logo{
     padding: 5px;
@@ -48,7 +54,4 @@ body{
 main span{
     text-shadow: 1px 1px 5px rgb(243, 210, 104);
     color: brown;
-}
-main div{
-    display: flex;
 }
