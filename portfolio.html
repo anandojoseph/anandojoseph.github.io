@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Smoke Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .smoke-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .smoke-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.25) 20%, rgba(255,255,255,0.1) 40%, transparent 70%);
+            filter: blur(2px);
+            opacity: 0;
+        }
+
+        .smoke-particle:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            left: 20%;
+            bottom: -150px;
+            animation: smokeRise1 12s infinite ease-out;
+            animation-delay: 0s;
+        }
+
+        .smoke-particle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            left: 40%;
+            bottom: -200px;
+            animation: smokeRise2 15s infinite ease-out;
+            animation-delay: -3s;
+        }
+
+        .smoke-particle:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            left: 60%;
+            bottom: -120px;
+            animation: smokeRise3 10s infinite ease-out;
+            animation-delay: -6s;
+        }
+
+        .smoke-particle:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            left: 80%;
+            bottom: -180px;
+            animation: smokeRise4 13s infinite ease-out;
+            animation-delay: -9s;
+        }
+
+        .smoke-particle:nth-child(5) {
+            width: 160px;
+            height: 160px;
+            left: 10%;
+            bottom: -160px;
+            animation: smokeRise5 14s infinite ease-out;
+            animation-delay: -12s;
+        }
+
+        .smoke-particle:nth-child(6) {
+            width: 140px;
+            height: 140px;
+            left: 70%;
+            bottom: -140px;
+            animation: smokeRise6 11s infinite ease-out;
+            animation-delay: -15s;
+        }
+
+        .large-smoke {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.08) 50%, transparent 75%);
+            filter: blur(4px);
+            opacity: 0;
+        }
+
+        .large-smoke:nth-child(7) {
+            width: 400px;
+            height: 300px;
+            left: 30%;
+            bottom: -300px;
+            animation: largeSmokeRise1 20s infinite ease-out;
+            animation-delay: -5s;
+        }
+
+        .large-smoke:nth-child(8) {
+            width: 350px;
+            height: 250px;
+            left: 50%;
+            bottom: -250px;
+            animation: largeSmokeRise2 18s infinite ease-out;
+            animation-delay: -12s;
+        }
+
+        @keyframes smokeRise1 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.8;
+            }
+            30% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(60px) rotate(180deg) scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeRise2 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.9;
+            }
+            40% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-130vh) translateX(-40px) rotate(-120deg) scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeRise3 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.4);
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(80px) rotate(240deg) scale(2.2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeRise4 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            18% {
+                opacity: 0.8;
+            }
+            35% {
+                opacity: 1;
+            }
+            82% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-125vh) translateX(-60px) rotate(-200deg) scale(1.9);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeRise5 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            22% {
+                opacity: 0.9;
+            }
+            45% {
+                opacity: 1;
+            }
+            88% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-135vh) translateX(100px) rotate(300deg) scale(2.1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeRise6 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.4);
+                opacity: 0;
+            }
+            28% {
+                opacity: 0.6;
+            }
+            55% {
+                opacity: 1;
+            }
+            92% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-115vh) translateX(-80px) rotate(-160deg) scale(2.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes largeSmokeRise1 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.3);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            25% {
+                opacity: 0.8;
+            }
+            75% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-140vh) translateX(120px) rotate(90deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes largeSmokeRise2 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.4);
+                opacity: 0;
+            }
+            12% {
+                opacity: 0.7;
+            }
+            30% {
+                opacity: 0.9;
+            }
+            80% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-145vh) translateX(-100px) rotate(-110deg) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.2) 0%,
+                rgba(0,0,0,0.05) 30%,
+                rgba(0,0,0,0.05) 70%,
+                rgba(0,0,0,0.3) 100%
+            );
+            z-index: 5;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: white;
+        }
+
+        .text-container {
+            position: relative;
+            padding: 40px;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: normal;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-transform: uppercase;
+        }
+
+        .brand .dot {
+            color: #2196F3;
+            font-weight: bold;
+        }
+
+        .main-text {
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .blue-lines {
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        .blue-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #2196F3 20%, #2196F3 80%, transparent 100%);
+            margin: 20px 0;
+            opacity: 0.8;
+        }
+
+        .blue-line.top {
+            position: absolute;
+            top: -20px;
+        }
+
+        .blue-line.bottom {
+            position: absolute;
+            bottom: -20px;
+        }
+
+        .blue-line.middle {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.4;
+        }
+
+        .corner-frame {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 2;
+        }
+
+        .corner-frame.top-left {
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-frame.top-right {
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-frame.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-frame.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-left: none;
+            border-top: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 2.5rem;
+            }
+            .brand {
+                font-size: 1rem;
+            }
+            .corner-frame {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-text {
+                font-size: 2rem;
+            }
+            .text-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="smoke-container">
+        <div class="smoke-particle"></div>
+        <div class="smoke-particle"></div>
+        <div class="smoke-particle"></div>
+        <div class="smoke-particle"></div>
+        <div class="smoke-particle"></div>
+        <div class="smoke-particle"></div>
+        <div class="large-smoke"></div>
+        <div class="large-smoke"></div>
+        
+        <div class="content-overlay"></div>
+        
+        <div class="corner-frame top-left"></div>
+        <div class="corner-frame top-right"></div>
+        <div class="corner-frame bottom-left"></div>
+        <div class="corner-frame bottom-right"></div>
+        
+        <div class="content">
+            <div class="text-container">
+                <div class="blue-lines">
+                    <div class="blue-line top"></div>
+                    <div class="blue-line middle"></div>
+                    <div class="blue-line bottom"></div>
+                </div>
+                
+                <div class="brand">AnandoJoseph<span class="dot">.</span>com</div>
+                
+                <div class="main-text">
+                    The Portfolio of a<br>
+                    Web<br>
+                    Enthusiast.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
